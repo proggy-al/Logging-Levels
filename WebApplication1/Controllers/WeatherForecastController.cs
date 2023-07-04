@@ -34,7 +34,7 @@ namespace WebApplication1.Controllers
         [HttpGet("[action]")]
         public async Task<string> GetTest()
         {
-            var test = "Test messge";
+            var test = "Test message";
             
             _logger.LogTrace("Trace");
             _logger.LogInformation("Information");
