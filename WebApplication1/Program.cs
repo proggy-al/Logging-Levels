@@ -16,7 +16,7 @@ builder.Logging.SetMinimumLevel(LogLevel.Information);
 var app = builder.Build();
 
 // retrieve the logger
-var logger = app.Services.GetService<ILogger<Program>>();
+//var logger = app.Services.GetService<ILogger<Program>>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
