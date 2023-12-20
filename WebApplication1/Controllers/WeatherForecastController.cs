@@ -12,10 +12,12 @@ namespace WebApplication1.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IHostApplicationLifetime _applicationLifetime;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IHostApplicationLifetime applicationLifetime)
         {
             _logger = logger;
+            _applicationLifetime = applicationLifetime;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -43,6 +45,13 @@ namespace WebApplication1.Controllers
             
 
             return test;
+        }
+
+        [HttpGet("stopApp")]
+        public IActionResult StopApp()
+        {
+            _applicationLifetime.StopApplication();
+            return new EmptyResult();
         }
     }
 }
