@@ -19,7 +19,10 @@ namespace WebApplication1.Controllers
             _logger = logger;
             _applicationLifetime = applicationLifetime;
         }
-
+        /// <summary>
+        /// Базовый метод контроллера прогноза погоды
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -32,8 +35,11 @@ namespace WebApplication1.Controllers
             .ToArray();
         }
 
-
-        [HttpGet("[action]")]
+        /// <summary>
+        /// Генерация записи в лог тестовых сообщений
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("[action]", Name ="Show Logger Ability")]
         public async Task<string> GetTest()
         {
             var test = "Test message";
@@ -47,7 +53,11 @@ namespace WebApplication1.Controllers
             return test;
         }
 
-        [HttpGet("stopApp")]
+        /// <summary>
+        /// Остановка приложения
+        /// </summary>
+        /// <returns>Ничего не возвращает</returns>
+        [HttpGet("stopApp", Name ="Stop Application")]
         public IActionResult StopApp()
         {
             _applicationLifetime.StopApplication();

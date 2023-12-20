@@ -1,3 +1,5 @@
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 using WebApplication1.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Example of logging", Version = "v1" });
+
+    // generate the XML docs that'll drive the swagger docs
+    var xmlFile = $"{ Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
+}
+
+    );
 builder.Services.AddHostedService<LifetimeEventsHostedService>();
 
 //logging level
