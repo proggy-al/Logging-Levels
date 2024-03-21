@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
+    [ApiController]    
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -36,7 +36,7 @@ namespace WebApplication1.Controllers
         }
 
         /// <summary>
-        /// Генерация записи в лог тестовых сообщений
+        /// Генерация записи в лог тестовых сообщений 3244241242134234
         /// </summary>
         /// <returns></returns>
         [HttpGet("[action]", Name ="Show Logger Ability")]
@@ -44,10 +44,11 @@ namespace WebApplication1.Controllers
         {
             var test = "Test message";
             
-            _logger.LogTrace("Trace");
-            _logger.LogInformation("Information");
-            _logger.LogError("Error");
-            _logger.LogCritical("Critical");
+            _logger.LogTrace("Trace log mes");
+            _logger.LogInformation("Information log mes");
+            _logger.LogWarning("Warning log mes");
+            _logger.LogError("Error log mes");
+            _logger.LogCritical("Critical log mes");
             
 
             return test;

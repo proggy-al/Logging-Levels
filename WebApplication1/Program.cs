@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddHostedService<LifetimeEventsHostedService>();
 
 //logging level
-builder.Logging.SetMinimumLevel(LogLevel.Information);
+//builder.Logging.SetMinimumLevel(LogLevel.Trace);
 
 var app = builder.Build();
 
